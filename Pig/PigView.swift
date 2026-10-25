@@ -131,11 +131,19 @@ struct PigView: View {
                 .buttonStyle(.borderedProminent)
                 .disabled(gameOver == true)
                 
+
+                    
                 Button("Hold", systemImage: "hand.raised.fill") {
                     hold()
                 }
                 .buttonStyle(.bordered)
                 .disabled(gameOver == true)
+                
+                Button("Steal", systemImage: "dollarsign") {
+                    steal()
+                }
+                .buttonStyle(.borderedProminent)
+                .tint(.red)
             }
             .font(.title2)
             .bold()
@@ -178,6 +186,31 @@ struct PigView: View {
     }
     
     // Banks the turn total into the current player's score, then ends the turn.
+    func steal() {
+        let fifyfifty: Int = Int.random(in: 1...2)
+        
+        if currentPlayer == 1{
+            if fifyfifty == 1 {
+                playerOneScore = playerOneScore/2
+            }
+            else {
+                playerOneScore = playerOneScore + (playerTwoScore/2)
+                playerTwoScore = playerTwoScore/2
+            }
+        }
+        else {
+            if fifyfifty == 1 {
+                playerTwoScore = playerTwoScore/2
+            }
+            else {
+                playerTwoScore = playerTwoScore + (playerOneScore/2)
+                playerOneScore = playerOneScore/2
+            }
+        }
+        
+        switchPlayer()
+        turnTotal = 0
+    }
     func hold() {
         if currentPlayer == 1 {
             playerOneScore += turnTotal
