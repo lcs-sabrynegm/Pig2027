@@ -220,6 +220,7 @@ struct PigView: View {
             message = "player 2 wins!"
             
             gameOver = true
+            dieSymbol = "party.popper.fill"
             
         }
     }

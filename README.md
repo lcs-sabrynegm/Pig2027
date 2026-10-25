@@ -10,10 +10,11 @@ You against a friend. Finish your turn and it switches to your friend's turn.
  
 ## What I added
  
-- Nothing yet. This list grows as I work on Make It Yours.
+- Added an actual ending when a player reaches one hundred, i also disabled rolls/holds when they win
  
 ## Credits
  
 - The starting game was written by Mr. Gordon.
+- Chatgpt was used to write and understand changes in disabling rolls/holds
 
 
