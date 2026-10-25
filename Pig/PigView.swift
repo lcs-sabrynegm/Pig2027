@@ -181,7 +181,7 @@ struct PigView: View {
             // Any other roll is added to the turn total.
             turnTotal += roll
             // TRY: Change this message.
-            message = "You rolled a \(roll). Roll again, or hold?"
+            message = "You rolled a \(roll). Roll again, or hold, or steal?"
         }
     }
     
@@ -192,19 +192,24 @@ struct PigView: View {
         if currentPlayer == 1{
             if fifyfifty == 1 {
                 playerOneScore = playerOneScore/2
+                message = "Player 1 lost half thier points!"
             }
             else {
                 playerOneScore = playerOneScore + (playerTwoScore/2)
                 playerTwoScore = playerTwoScore/2
+                
+                message = "Player 1 stole half of Player 2's points!"
             }
         }
         else {
             if fifyfifty == 1 {
                 playerTwoScore = playerTwoScore/2
+                message = "Player 2 lost half thier points!"
             }
             else {
                 playerTwoScore = playerTwoScore + (playerOneScore/2)
                 playerOneScore = playerOneScore/2
+                message = "Player 2 stole half of Player 1's points!"
             }
         }
         
