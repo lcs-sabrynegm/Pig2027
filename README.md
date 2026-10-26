@@ -14,6 +14,9 @@ You against a friend. Finish your turn and it switches to your friend's turn.
 - Added an actual ending when a player reaches one hundred featuring a symbol and message, I also disabled rolls/holds when they win
 - added a new button, the steal button, which has a 50/50 chance of either stealing half the opponents points or losing half your points
 - added messages for the new steal button
+
+### How it works
+the steal button works essentially by generating either a one or a two in a constant titled fiftyfifty, if a one is generated then a couple if statements run resulting in the current player loses half thier points but if a two is generated the other statements run resulting in the current player stealing half the other player's points. The turn is switched after the button is pressed.
  
 ## Credits
  
