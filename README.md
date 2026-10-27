@@ -25,7 +25,13 @@ testing if 100 is actually winning number
 |  3|  should take 34 rolls to win |  it took 34 rolls |
 |  5|  should take 20 rolls to win |s it took 20 rolls |
 |  1|  should never win | never won |
-all tests passed
+all tests passed meaning the game actually ends when reaching 100
+
+| chosen input | what should happen | what happend |
+| --- | --- | --- | --- |
+| opponent starts at 50 points, fiftyfifty is set to 1 |wcurrent player should lose half thier points |  current player lost half thier points | opponent starts at 50 points, fiftyfifty is set to 2 |
+| current player should steal 25 points |  current player stole 25 points |  |  |
+both tests pass meaning all steal outcomes do what they are meant to
 ## Credits 
 - The starting game was written by Mr. Gordon.
 - Chatgpt was used to write and understand changes in disabling rolls/holds and figuring out how to change button color
