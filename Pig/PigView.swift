@@ -247,14 +247,14 @@ struct PigView: View {
         }
     }
     func EndGame(){
-        if playerOneScore >= 100 {
+        if playerOneScore >= endingNumber {
             message = "player 1 wins!"
             
             gameOver = true
             dieSymbol = "party.popper.fill"
         }
         
-        if playerTwoScore >= 100 {
+        if playerTwoScore >= endingNumber {
             message = "player 2 wins!"
             
             gameOver = true

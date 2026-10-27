@@ -16,10 +16,17 @@ You against a friend. Finish your turn and it switches to your friend's turn.
 - added messages for the new steal button
 
 ### How it works
-the steal button works essentially by generating either a one or a two in a constant titled fiftyfifty, if a one is generated then a couple if statements run resulting in the current player loses half thier points but if a two is generated the other statements run resulting in the current player stealing half the other player's points. The turn is switched after the button is pressed.
- 
-## Credits
- 
+the steal button works essentially by generating either a one or a two in a constant titled fiftyfifty, i used a constant instead of two randomness pieces to save having to duplicate code, if a one is generated then a couple if statements run resulting in the current player loses half thier points but if a two is generated the other statements run resulting in the current player stealing half the other player's points. The turn is switched after the button is pressed.
+I added an ending number constant being 100 which checks 
+### Testing
+testing if 100 is actually winning number
+|  Chosen Input |  What should happen | What did happen |
+| --- | --- | --- |
+|  3|  should take 34 rolls to win |  it took 34 rolls |
+|  5|  should take 20 rolls to win |s it took 20 rolls |
+|  1|  should never win | never won |
+all tests passed
+## Credits 
 - The starting game was written by Mr. Gordon.
 - Chatgpt was used to write and understand changes in disabling rolls/holds and figuring out how to change button color
 - Symbols off of SF symbols
