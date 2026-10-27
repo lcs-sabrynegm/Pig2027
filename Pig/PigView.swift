@@ -144,6 +144,7 @@ struct PigView: View {
                 }
                 .buttonStyle(.borderedProminent)
                 .tint(.red)
+                .disabled(gameOver == true)
             }
             .font(.title2)
             .bold()
