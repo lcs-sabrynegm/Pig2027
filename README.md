@@ -17,6 +17,7 @@
 the steal button works essentially by generating either a one or a two in a constant titled fiftyfifty, i used a constant instead of two randomness pieces to save having to duplicate code, if a one is generated then a nested if statement is run resulting in another constant called losing fiftyfifty to run for the losing side meaning there is a 25% chance the current player loses half their points(randomness logic rolled a 1 then a 1), and a 25% chance they lose the entire game by stealing (randomness logic rolled a 1 then a 2).  However if a two is generated the other if statements run resulting in the current player stealing half the other player's points (randomness logic rolled a 2). The turn is switched after the button is pressed.
 Design choice: I added a 25% chance of losing if steal is pressed so that there is larger consequences for pressing the buttons and it isnt as wecoming however still worth pressing in dire situations because of the 50% success rate.
 I added an ending number constant being 100 and it is used to check if the game is over symbols are changed and so is the message, buttons are also deactivated when the game ends.
+I added a bigHeader variable for the header that shows who's turn it is, it is now blank when someone wins and it uses returns.
 ### Testing
 testing if 100 is actually winning number
 
@@ -47,5 +48,6 @@ all steal possibilities work as intended
 - The starting game was written by Mr. Gordon.
 - Chatgpt was used to write and understand changes in disabling rolls/holds and figuring out how to change button color
 - Symbols off of SF symbols
+- claude to help create and understand bigHeader logic
 
 
