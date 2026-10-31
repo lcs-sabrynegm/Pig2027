@@ -19,6 +19,8 @@ import SwiftUI
 // TRY: Change these two colours. Try Color.purple, Color.green or Color.pink.
 let playerOneColor: Color = Color.blue
 let playerTwoColor: Color = Color.orange
+
+//the number which the game ends at when reached.
 let endingNumber: Int = 100
 
 // The game itself: what it remembers, what it shows on the screen,
@@ -53,6 +55,8 @@ struct PigView: View {
     
     // A message that tells the players what just happened.
     @State var message: String = "Player 1 goes first. Click Roll to start."
+    
+    // The header showing who's turn it is.
     var bigHeader: String {
         if gameOver {
             return ""
