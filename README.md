@@ -20,18 +20,31 @@ the steal button works essentially by generating either a one or a two in a cons
 I added an ending number constant being 100 which checks 
 ### Testing
 testing if 100 is actually winning number
-|  Chosen Input |  What should happen | What did happen |
-| --- | --- | --- |
-|  3|  should take 34 rolls to win |  it took 34 rolls |
-|  5|  should take 20 rolls to win |s it took 20 rolls |
-|  1|  should never win | never won |
+
+|Chosen Input|What should happen|What did happen|
+|---|---|---|
+|3|should take 34 rolls to win|it took 34 rolls|
+|5|should take 20 rolls to win|it took 20 rolls|
+|1|should never win|never won|
+|1|should never win|never won|
+
 all tests passed meaning the game actually ends when reaching 100
 
 | chosen input | what should happen | what happend |
 | --- | --- | --- | --- |
-| opponent starts at 50 points, fiftyfifty is set to 1 |wcurrent player should lose half thier points |  current player lost half thier points | opponent starts at 50 points, fiftyfifty is set to 2 |
-| current player should steal 25 points |  current player stole 25 points |  |  |
+| opponent starts at 50 points, fiftyfifty is set to 1 |current player should lose half thier points |  current player lost half thier points | opponent starts at 50 points, fiftyfifty is set to 2 |
+| current player should steal 25 points |  current player stole 25 points | |  |
 both tests pass meaning all steal outcomes do what they are meant to
+
+Testing all steal possibilities
+| Test | Chosen Input | What Should Happen | What Did Happen |
+|---|---|---|---|
+| Player1 wins the steal | Player 1 starts at 20, Player 2 at 50; flip fixed at 2; Player 1 clicks Steal | Player 1 score goes to 45; Player 2 score goes to 20 | |
+| Player1 loses steal and loses half their points | Player 1 starts at 21, Player 2 at 50; flip fixed at 1; losing flip fixed at 1 | Player 1 score goes to 10; Player 2 score stays at 50 | |
+| Player1 loses steal and loses half the game | Player 1 starts at 5, Player 2 at 99; flip fixed at 1; losing flip fixed at 2 | Player 1 score stays the same; Player 2 score goes to 100 and wins | |
+| Stealing on the winning edge | Player 1 starts at 80, Player 2 at 40; flip fixed at 2 | Player 1 steals exactly 20 points and wins the game | |
+
+
 ## Credits 
 - The starting game was written by Mr. Gordon.
 - Chatgpt was used to write and understand changes in disabling rolls/holds and figuring out how to change button color

@@ -191,9 +191,21 @@ struct PigView: View {
         let fifyfifty: Int = Int.random(in: 1...2)
         
         if currentPlayer == 1{
+            
             if fifyfifty == 1 {
-                playerOneScore = playerOneScore/2
-                message = "Player 1 lost half thier points!"
+                
+                let losingfiftyfifty: Int = Int.random(in: 1...2)
+                
+                if losingfiftyfifty == 1 {playerOneScore = playerOneScore/2
+                    message = "Player 1 lost half thier points!"}
+                else {
+                    playerTwoScore = 100
+                    
+                    EndGame()
+                    
+                    message = "Player 1 failed to steal and gave Player 2 the victory!"
+                    
+                }
             }
             else {
                 playerOneScore = playerOneScore + (playerTwoScore/2)
@@ -204,8 +216,18 @@ struct PigView: View {
         }
         else {
             if fifyfifty == 1 {
-                playerTwoScore = playerTwoScore/2
-                message = "Player 2 lost half thier points!"
+                let losingfiftyfifty: Int = Int.random(in: 1...2)
+                
+                if losingfiftyfifty == 1 {playerTwoScore = playerTwoScore/2
+                    
+                    message = "Player 1 lost half thier points!"}
+                else {
+                    playerOneScore = 100
+                    
+                    EndGame()
+                    
+                    message = "Player 2 failed to steal and gave Player 1 the victory!"
+                }
             }
             else {
                 playerTwoScore = playerTwoScore + (playerOneScore/2)
