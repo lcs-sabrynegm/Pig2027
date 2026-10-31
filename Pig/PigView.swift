@@ -53,6 +53,12 @@ struct PigView: View {
     
     // A message that tells the players what just happened.
     @State var message: String = "Player 1 goes first. Click Roll to start."
+    var bigHeader: String {
+        if gameOver {
+            return ""
+        }
+        return "Player \(currentPlayer), your turn"
+    }
     
     // MARK: - Computed properties
     
@@ -97,7 +103,7 @@ struct PigView: View {
             Spacer()
             
             // Whose turn is it?
-            Text("Player \(currentPlayer), your turn")
+            Text(bigHeader)
                 .font(.title)
                 .bold()
                 .foregroundStyle(turnColor)
@@ -200,6 +206,8 @@ struct PigView: View {
                 else {
                     playerTwoScore = endingNumber
                     
+                    switchPlayer()
+                    
                     endGame()
                     
                     message = "Player 1 failed to steal and gave Player 2 the victory!"
@@ -223,6 +231,8 @@ struct PigView: View {
                     message = "Player 1 lost half thier points!"}
                 else {
                     playerOneScore = endingNumber
+                    
+                    switchPlayer()
                     
                     endGame()
                     
@@ -278,6 +288,7 @@ struct PigView: View {
             message = "player 1 wins!"
             
             gameOver = true
+            
             dieSymbol = "party.popper.fill"
         }
         
@@ -285,6 +296,7 @@ struct PigView: View {
             message = "player 2 wins!"
             
             gameOver = true
+            
             dieSymbol = "party.popper.fill"
             
         }
