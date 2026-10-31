@@ -7,11 +7,10 @@
 //  On your turn, roll the die as many times as you like.
 //  Each roll adds to your turn total.
 //  Roll a 1 and you lose your turn total, and your turn is over.
+//  press steal for a 50% chance to steal half the other player's points.
+//  But risk losing the game or losing half your points.
 //  Click Hold to bank your turn total into your score and end your turn.
-//
-//  WHAT IT DOES NOT DO YET
-//  Nobody can win! The scores just keep going up.
-//  In the real game, the first player to reach 100 points wins.
+//  The game can now end with endingNumber being 100
 //
 
 import SwiftUI
@@ -199,9 +198,9 @@ struct PigView: View {
                 if losingfiftyfifty == 1 {playerOneScore = playerOneScore/2
                     message = "Player 1 lost half thier points!"}
                 else {
-                    playerTwoScore = 100
+                    playerTwoScore = endingNumber
                     
-                    EndGame()
+                    endGame()
                     
                     message = "Player 1 failed to steal and gave Player 2 the victory!"
                     
@@ -212,6 +211,7 @@ struct PigView: View {
                 playerTwoScore = playerTwoScore/2
                 
                 message = "Player 1 stole half of Player 2's points!"
+                endGame()
             }
         }
         else {
@@ -222,9 +222,9 @@ struct PigView: View {
                     
                     message = "Player 1 lost half thier points!"}
                 else {
-                    playerOneScore = 100
+                    playerOneScore = endingNumber
                     
-                    EndGame()
+                    endGame()
                     
                     message = "Player 2 failed to steal and gave Player 1 the victory!"
                 }
@@ -233,12 +233,16 @@ struct PigView: View {
                 playerTwoScore = playerTwoScore + (playerOneScore/2)
                 playerOneScore = playerOneScore/2
                 message = "Player 2 stole half of Player 1's points!"
+                endGame()
+                
             }
         }
-        
-        switchPlayer()
-        turnTotal = 0
+
+        if !gameOver{
+            switchPlayer()
+            turnTotal = 0}
     }
+    // Passes the turn to the other player.
     func hold() {
         if currentPlayer == 1 {
             playerOneScore += turnTotal
@@ -249,14 +253,14 @@ struct PigView: View {
         turnTotal = 0
         
         
-        EndGame()
+        endGame()
         if !gameOver{
             switchPlayer()
         }
     
     }
     
-    // Passes the turn to the other player.
+    // Stealing mechanic with randomness logic.
     func switchPlayer() {
         rollsThisTurn = 0
         
@@ -269,7 +273,7 @@ struct PigView: View {
             turnColor = playerTwoColor
         }
     }
-    func EndGame(){
+    func endGame(){
         if playerOneScore >= endingNumber {
             message = "player 1 wins!"
             

@@ -1,11 +1,9 @@
-#  # Pig
- 
-You against a friend. Finish your turn and it switches to your friend's turn.
+#   Pig 
  
 ## How to play
  
 1. Click roll and decide when to stop rolling when you're satisfied, click hold, but try not to roll a one**.
-2. If you're want to risk it press steal for a 50% chance to steal half you're opponents points or lose half your points
+2. If you want to risk it, press steal for a 50% chance to steal half you're opponents points, 25% chance to lose half your points, or a 25% chance to lose automatically
 3. Your friend repeats the first two steps during their turn.
 4. First to 100 points wins.
  
@@ -16,8 +14,9 @@ You against a friend. Finish your turn and it switches to your friend's turn.
 - added messages for the new steal button
 
 ### How it works
-the steal button works essentially by generating either a one or a two in a constant titled fiftyfifty, i used a constant instead of two randomness pieces to save having to duplicate code, if a one is generated then a couple if statements run resulting in the current player loses half thier points but if a two is generated the other statements run resulting in the current player stealing half the other player's points. The turn is switched after the button is pressed.
-I added an ending number constant being 100 which checks 
+the steal button works essentially by generating either a one or a two in a constant titled fiftyfifty, i used a constant instead of two randomness pieces to save having to duplicate code, if a one is generated then a nested if statement is run resulting in another constant called losing fiftyfifty to run for the losing side meaning there is a 25% chance the current player loses half their points(randomness logic rolled a 1 then a 1), and a 25% chance they lose the entire game by stealing (randomness logic rolled a 1 then a 2).  However if a two is generated the other if statements run resulting in the current player stealing half the other player's points (randomness logic rolled a 2). The turn is switched after the button is pressed.
+Design choice: I added a 25% chance of losing if steal is pressed so that there is larger consequences for pressing the buttons and it isnt as wecoming however still worth pressing in dire situations because of the 50% success rate.
+I added an ending number constant being 100 and it is used to check if the game is over symbols are changed and so is the message, buttons are also deactivated when the game ends.
 ### Testing
 testing if 100 is actually winning number
 
@@ -32,19 +31,18 @@ all tests passed meaning the game actually ends when reaching 100
 
 | chosen input | what should happen | what happend |
 | --- | --- | --- | --- |
-| opponent starts at 50 points, fiftyfifty is set to 1 |current player should lose half thier points |  current player lost half thier points | opponent starts at 50 points, fiftyfifty is set to 2 |
+| opponent starts at 50 points, fiftyfifty is set to 1 |current player should lose half their points |  current player lost half their points | opponent starts at 50 points, fiftyfifty is set to 2 |
 | current player should steal 25 points |  current player stole 25 points | |  |
 both tests pass meaning all steal outcomes do what they are meant to
 
 Testing all steal possibilities
 | Test | Chosen Input | What Should Happen | What Did Happen |
 |---|---|---|---|
-| Player1 wins the steal | Player 1 starts at 20, Player 2 at 50; flip fixed at 2; Player 1 clicks Steal | Player 1 score goes to 45; Player 2 score goes to 20 | |
-| Player1 loses steal and loses half their points | Player 1 starts at 21, Player 2 at 50; flip fixed at 1; losing flip fixed at 1 | Player 1 score goes to 10; Player 2 score stays at 50 | |
-| Player1 loses steal and loses half the game | Player 1 starts at 5, Player 2 at 99; flip fixed at 1; losing flip fixed at 2 | Player 1 score stays the same; Player 2 score goes to 100 and wins | |
-| Stealing on the winning edge | Player 1 starts at 80, Player 2 at 40; flip fixed at 2 | Player 1 steals exactly 20 points and wins the game | |
-
-
+| Player 1 wins the steal | Player 1 starts at 20, Player 2 at 50; flip fixed at 2; Player 1 clicks Steal | Player 1 score goes to 45; Player 2 score goes to 25 | It works! |
+| Player 1 loses steal and loses half their points | Player 1 starts at 21, Player 2 at 50; flip fixed at 1; losing flip fixed at 1 | Player 1 score goes to 10; Player 2 score stays at 50 | It works! |
+| Player 1 loses steal and loses the game | Player 1 starts at 5, Player 2 at 99; flip fixed at 1; losing flip fixed at 2 | Player 1 score stays the same; Player 2 score goes to 100 and wins | It works! |
+| Stealing on the winning edge | Player 1 starts at 80, Player 2 at 40; flip fixed at 2 | Player 1 steals exactly 20 points and wins the game | It works! |
+all steal possibilities work as intended
 ## Credits 
 - The starting game was written by Mr. Gordon.
 - Chatgpt was used to write and understand changes in disabling rolls/holds and figuring out how to change button color
